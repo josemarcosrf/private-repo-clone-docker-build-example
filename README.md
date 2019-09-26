@@ -5,12 +5,15 @@
 We want to create a docker image installing some dependecy from
 a private github repository using SSH read keys.
 
-To do so we use a `multi-stage` build in Docker so we always keep
-our SSH keys protected as the first stage, where the SSH key is, 
-won't be present in the final image.
+To do so we use a [multi-stage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) so we always keep
+our SSH keys protected and private.
+This is so because the first stage of the build, where the SSH key is, 
+won't be present in the final image, hence not exposing any sensitive information.
 
 More info abou the process can be found in [this blog post](https://vsupalov.com/build-docker-image-clone-private-repo-ssh-key/)
 
+
+For this example we'll be using this [private repo](https://github.com/jmrf/nlu-engine)
 
 ## How To
 1. Generate a SSH key

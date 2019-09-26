@@ -1,4 +1,5 @@
-# multi-stage building
+# multi-stage building:
+# First stage just clones the private repo using SSH
 FROM python:3.6-slim as cloner
 
 SHELL ["/bin/bash", "-c"]
@@ -22,9 +23,9 @@ RUN git clone git@github.com:jmrf/nlu-engine.git
 
 FROM python:3.6-slim
 
+# Using the cloner, copy the source and install
 COPY --from=cloner /nlu-engine /src/nlu-engine
 
 # install the cloned-repo
 RUN pip install -e /src/nlu-engine
-
 RUN python3 -m rasa_nlu.train -h
