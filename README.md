@@ -21,12 +21,12 @@ For this example we'll be using this [private repo](https://github.com/jmrf/nlu-
     ssh-keygen -t rsa -b 4096 -C "your@email..com"
 ```
 
-2. Add the public key as _read-only_ [deploy key](https://github.blog/2015-06-16-read-only-deploy-keys/) to your repo.
+2. Add the private key as _read-only_ [deploy key](https://github.blog/2015-06-16-read-only-deploy-keys/) to your repo.
 More [info here](https://superuser.com/questions/1314064/read-only-access-to-github-repo-via-ssh-key)
 
 3. Run the `build-docker.sh` script:
 ```bash
-    # export path to the public key
-    export KEY_PATH=<your-public-key-path>
+    # export path to the private key
+    export KEY_PATH=<your-private-key-path>
     ./build-docker.sh
 ```
